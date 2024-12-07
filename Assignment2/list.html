@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 300px;
+        }
+
+        li {
+            background-color: rgb(186, 37, 219);
+            color: white;
+            padding: 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        li:hover {
+            background-color: rgb(186, 37, 219);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <ul id="itemList">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+
+    <script>
+        function generateRandomString(length) {
+            const characters = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                result += characters[randomIndex];
+            }
+            return result;
+        }
+        window.onload = function () {
+            const ul = document.getElementById('itemList');
+            const newItem = document.createElement('li');
+            newItem.textContent = 'Fourth item';
+            ul.appendChild(newItem);
+
+            const listItems = ul.getElementsByTagName('li');
+            for (let item of listItems) {
+                item.addEventListener('click', function () {
+                    this.textContent = generateRandomString(10); 
+                });
+            }
+        };
+    </script>
+</body>
+</html>

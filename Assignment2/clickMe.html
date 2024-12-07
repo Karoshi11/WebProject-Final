@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculate Area</title>
+    </head>
+    <button id="clickButton" onclick="handleClick()">Click the Button!</button>
+    <body>
+    <script>
+        function handleClick() {
+
+            alert("Button clicked!");
+
+            const button = document.getElementById("clickButton");
+
+            const randomColor = getRandomColor();
+
+            button.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+
+            const colors = ["green", "blue", "orange", "pink", "red","yellow", "white", "black"];
+
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+</html>

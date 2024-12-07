@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+        }
+
+        /* Styling the div element */
+        .box {
+            width: 200px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #333;
+            margin: 30px;
+            background-color: rgb(186, 37, 219);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        Click or Hover
+    </div>
+
+    <script>
+        const box = document.getElementById('box');
+
+        box.addEventListener('click', () => {
+            if (box.style.backgroundColor === 'rgb(186, 37, 219)') {
+                box.style.backgroundColor = 'blue';
+            } else {
+                box.style.backgroundColor = 'rgb(186, 37, 219)';
+            }
+            box.style.backgroundColor = newColor;
+        });
+
+        box.addEventListener('mouseover', () => {
+            box.style.borderColor = 'white';
+        });
+
+        box.addEventListener('mouseout', () => {
+            box.style.borderColor = '#333';
+        });
+    </script>
+</body>
+
+</html>
