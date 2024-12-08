@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="top-nav">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Bio.html">Bio</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="Media.html">Media</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="media-section">
+            <h2>Watch Videos</h2>
+            <iframe id="video-player" width="600" height="315" src="https://www.youtube.com/watch?v=px2hdZJLC3A" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+            
+            <br>
+            <label for="video-select">Select a video:</label>
+            <select id="video-select" onchange="changeVideo()">
+                <option value="https://www.youtube.com/watch?v=9MALazVq-04">Sample Video</option>
+                <option value="https://www.youtube.com/watch?v=tCEFZfv8qKg&t=758s">Another Video</option>
+            </select>
+        </div>
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+
+    <script>
+        const videoPlayer = document.getElementById('video-player');
+        const videoSelect = document.getElementById('video-select');
+
+        videoSelect.addEventListener('change', function() {
+            videoPlayer.src = videoSelect.value;
+            videoPlayer.load();
+            videoPlayer.play();
+        });
+    </script>
+</body>
+</html>

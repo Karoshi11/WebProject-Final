@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header>
+        <nav>
+            <ul class="top-nav">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Bio.html">Bio</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="Media.html">Media</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>About Me</h1>
+    </header>
+
+    <main>
+        <section class="bio-section">
+            <h2>Get to Know Me</h2>
+            <label for="bioCategory">Select Section:</label>
+            <select id="bioCategory" onchange="updateBio()">
+                <option value="background">Background</option>
+                <option value="education">Education</option>
+                <option value="hobbies">Hobbies</option>
+            </select>
+
+            <div id="bioContent"></div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Fun Quiz!</h2>
+            <p>What’s my favorite programming language?</p>
+            <form id="quizForm" onsubmit="handleQuiz(event)">
+                <label><input type="radio" name="answer" value="Python"> Python</label><br>
+                <label><input type="radio" name="answer" value="JavaScript"> JavaScript</label><br>
+                <label><input type="radio" name="answer" value="C++"> C++</label><br>
+                <button type="submit">Submit</button>
+            </form>
+            <p id="quizResult"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+
+    <script>
+        function updateBio() {
+            const category = document.getElementById('bioCategory').value;
+            const content = document.getElementById('bioContent');
+            switch (category) {
+                case 'background': content.innerHTML = "<p>I love coding and solving problems!</p>"; break;
+                case 'education': content.innerHTML = "<p>Studied CS with a focus on web dev.</p>"; break;
+                case 'hobbies': content.innerHTML = "<p>I enjoy hiking, gaming, and coding.</p>"; break;
+            }
+        }
+
+        function handleQuiz(e) {
+            e.preventDefault();
+            const result = document.getElementById('quizResult');
+            const selected = Array.from(document.getElementsByName('answer')).find(r => r.checked)?.value;
+            result.textContent = selected === 'JavaScript' ? "Correct!" : "Try again!";
+        }
+
+        updateBio();
+    </script>
+</body>
+</html>

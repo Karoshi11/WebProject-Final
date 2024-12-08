@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header>
+        <nav>
+            <ul class="top-nav">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Bio.html">Bio</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="Media.html">Media</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Projects</h1>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <h2>Explore My Projects</h2>
+            <p>Filter by category, search for specific projects, or sort them alphabetically.</p>
+
+            <label for="projectCategory">Category:</label>
+            <select id="projectCategory" onchange="updateProjects()">
+                <option value="web">Web Development</option>
+                <option value="mobile">Mobile Development</option>
+                <option value="data">Data Science</option>
+            </select>
+
+            <label for="searchProjects">Search:</label>
+            <input type="text" id="searchProjects" placeholder="Search projects..." onkeyup="searchProjects()">
+
+            <button onclick="sortProjects()">Sort Projects</button>
+
+            <div id="projectsContent"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+
+    <script>
+        let projects = [];
+
+        function updateProjects() {
+            const category = document.getElementById('projectCategory').value;
+            switch (category) {
+                case 'web': projects = ['Portfolio Website', 'E-commerce Store', 'Personal Blog']; break;
+                case 'mobile': projects = ['Mobile App: E-commerce', 'Mobile Game']; break;
+                case 'data': projects = ['Machine Learning Model', 'Visualization Dashboard']; break;
+                default: projects = [];
+            }
+            displayProjects();
+        }
+
+        function displayProjects() {
+            const content = document.getElementById('projectsContent');
+            content.innerHTML = '<ul>';
+            projects.forEach(project => content.innerHTML += `<li>${project}</li>`);
+            content.innerHTML += '</ul>';
+        }
+
+        function searchProjects() {
+            const query = document.getElementById('searchProjects').value.toLowerCase();
+            const filtered = projects.filter(p => p.toLowerCase().includes(query));
+            const content = document.getElementById('projectsContent');
+            content.innerHTML = '<ul>';
+            filtered.forEach(p => content.innerHTML += `<li>${p}</li>`);
+            content.innerHTML += '</ul>';
+        }
+
+        function sortProjects() {
+            projects.sort();
+            displayProjects();
+        }
+
+        updateProjects();
+    </script>
+</body>
+</html>
